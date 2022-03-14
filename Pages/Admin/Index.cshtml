@@ -1,0 +1,24 @@
+﻿@page "/admin"
+
+@model Mission7.Pages.Admin.IndexModel
+
+@{
+}
+
+<!DOCTYPE html>
+
+<!--Main admin page that routes to other admin balzor pages-->
+<html>
+
+<head>
+    <title>Bookstore Admin</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+
+<body style="margin-bottom:50px">
+    <component type="typeof(Mission7.Pages.Admin.Routed)" render-mode="Server" />
+    <script src="/_framework/blazor.server.js"></script>
+</body>
+
+</html>

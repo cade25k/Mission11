@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Book List";
+}
+
+<!--Bring in book view model-->
+@model BooksViewModel
+
+<div class="text-center">
+    <h1 class="display-3">Book List</h1>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 100%"></div>
+    </div>
+</div>
+
+<!--Loop through books and display each one-->
+@foreach (Book b in Model.Books)
+{
+    <partial name="BookSummary" model="b"/>
+}
+
+<p>Pages</p>
+<!--Dynamically builds a tags using page-model tag helper-->
+<div page-model="@Model.PageInfo" page-action="Index" page-class="btn"
+     page-class-normal="btn-outline-secondary" page-class-selected="btn-info"
+     page-class-enabled="true" class="btn-group pull-right m-1"></div>

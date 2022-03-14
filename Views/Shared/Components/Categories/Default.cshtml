@@ -1,0 +1,15 @@
+﻿@{
+}
+
+@model IEnumerable<string>
+
+<!--Displays all the categories-->
+<div class="container">
+    <a asp-controller="Home" asp-action="Index" asp-route-bookCategory="" class="btn btn-outline-info btn-block">Home</a>
+
+    @foreach (string s in Model)
+    {
+        <a asp-controller="Home" asp-action="Index" asp-route-bookCategory="@s" 
+           class="btn btn-block @(ViewBag.SelectedCategory == s ? "btn-secondary" : "btn-outline-info")">@s</a>
+    }
+</div>

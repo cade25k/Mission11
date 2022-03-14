@@ -1,0 +1,42 @@
+﻿@page "/admin/orders"
+@inherits OwningComponentBase<IOrderRepository>
+
+<!--Dynamic tables to show completed and not completed orders-->
+<OrderTable TableTitle="Not Shipped Orders" Orders="NotShippedOrders"
+            ButtonLabel="Shipped" OrderSelected="ShipOrder"></OrderTable>
+
+<OrderTable TableTitle="Shipped Orders" Orders="ShippedOrders"
+            ButtonLabel="Reset" OrderSelected="ResetOrder"></OrderTable>
+
+<button class="btn btn-info" @onclick="@(x => UpdateData())">Refresh Data</button>
+
+@code {
+
+    public IOrderRepository repo => Service;
+    public IEnumerable<Order> AllOrders { get; set; }
+    public IEnumerable<Order> NotShippedOrders { get; set; }
+    public IEnumerable<Order> ShippedOrders { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        AllOrders = await repo.Orders.ToListAsync();
+        NotShippedOrders = AllOrders.Where(x => !x.Shipped);
+        ShippedOrders = AllOrders.Where(x => x.Shipped);
+    }
+
+    public void ShipOrder(int id) => UpdateOrder(id, true);
+    public void ResetOrder(int id) => UpdateOrder(id, false);
+
+    private void UpdateOrder(int id, bool shipped)
+    {
+        Order o = repo.Orders.FirstOrDefault(x => x.OrderId == id);
+        o.Shipped = shipped;
+        repo.SaveOrder(o);
+    }
+
+}

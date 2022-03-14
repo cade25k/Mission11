@@ -1,0 +1,20 @@
+﻿@inherits LayoutComponentBase
+
+<div class="bg-info text-white p-2">
+    <span class="navbar-brand m-lg-2">Bookstore Administration</span>
+</div>
+
+<!--Adds links to the side of the admin interface-->
+<div class="container-fluid">
+    <div class="row p-2">
+        <div class="col-3 d-grid">
+            <NavLink class="btn btn-block btn-outline-info" href="/admin/books"
+                     ActiveClass="btn-info text-white" Match="NavLinkMatch.Prefix">Books</NavLink>
+            <NavLink class="btn btn-block btn-outline-info" href="/admin/orders"
+                     ActiveClass="btn-info text-white" Match="NavLinkMatch.Prefix">Orders</NavLink>
+        </div>
+        <div class="col">
+            @Body
+        </div>
+    </div>
+</div>
