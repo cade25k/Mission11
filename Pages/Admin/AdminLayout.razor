@@ -1,7 +1,25 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="bg-info text-white p-2">
-    <span class="navbar-brand m-lg-2">Bookstore Administration</span>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <span class="navbar-brand m-lg-2">Bookstore Administration</span>
+            </div>
+            <div class="col">
+                <a class="btn btn-sm btn-secondary float-right" href="/account/logout">Logout</a>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<br />
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Logged in successfully!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 <!--Adds links to the side of the admin interface-->
